@@ -1,4 +1,4 @@
-import 'package:apple/widgets/navigation_bar.dart';
+import 'package:apple/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter/widgets.dart';
 
 class Layout extends StatelessWidget {
