@@ -5,10 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 final List<NavigationBarItemConfig> fixedLeftItems = [
-  NavigationBarItemConfig(icon: MdiIcons.apple),
+  NavigationBarItemConfig(id: 1, icon: MdiIcons.apple),
 ];
 const List<NavigationBarItemConfig> centerItems = [
   NavigationBarItemConfig(
+    id: 2,
     title: 'Tienda',
     dropdownColumnsConfig: [
       NavigationBarDropdownColumnConfig(
@@ -73,17 +74,17 @@ const List<NavigationBarItemConfig> centerItems = [
       ),
     ],
   ),
-  NavigationBarItemConfig(title: 'Mac'),
-  NavigationBarItemConfig(title: 'iPad'),
-  NavigationBarItemConfig(title: 'iPhone'),
-  NavigationBarItemConfig(title: 'Watch'),
-  NavigationBarItemConfig(title: 'AirPods'),
-  NavigationBarItemConfig(title: 'TV y Casa'),
-  NavigationBarItemConfig(title: 'Entretenimiento'),
-  NavigationBarItemConfig(title: 'Accesorios'),
-  NavigationBarItemConfig(title: 'Soporte'),
+  NavigationBarItemConfig(id: 3, title: 'Mac'),
+  NavigationBarItemConfig(id: 4, title: 'iPad'),
+  NavigationBarItemConfig(id: 5, title: 'iPhone'),
+  NavigationBarItemConfig(id: 6, title: 'Watch'),
+  NavigationBarItemConfig(id: 7, title: 'AirPods'),
+  NavigationBarItemConfig(id: 8, title: 'TV y Casa'),
+  NavigationBarItemConfig(id: 9, title: 'Entretenimiento'),
+  NavigationBarItemConfig(id: 10, title: 'Accesorios'),
+  NavigationBarItemConfig(id: 11, title: 'Soporte'),
 ];
 const List<NavigationBarItemConfig> fixedRightItems = [
-  NavigationBarItemConfig(icon: CupertinoIcons.search),
-  NavigationBarItemConfig(icon: CupertinoIcons.bag),
+  NavigationBarItemConfig(id: 12, icon: CupertinoIcons.search),
+  NavigationBarItemConfig(id: 13, icon: CupertinoIcons.bag),
 ];

@@ -38,8 +38,8 @@ class MediaQueries {
   };
 
   static final Map<double, double> navigationBarIconSizes = {
-    0: 19,
-    833: 17,
+    0: 23,
+    833: 20,
   };
 
   static final Map<double, double> navigationBarContentHPaddings = {

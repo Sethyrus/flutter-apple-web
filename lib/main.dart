@@ -3,6 +3,7 @@ import 'package:apple/utils/logger.dart';
 import 'package:apple/utils/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class App extends StatelessWidget {
@@ -50,6 +51,6 @@ void main() {
       // Setting to 1.0 will profile 100% of sampled transactions:
       options.profilesSampleRate = 1.0;
     },
-    appRunner: () => runApp(const App()),
+    appRunner: () => runApp(const ProviderScope(child: App())),
   );
 }
