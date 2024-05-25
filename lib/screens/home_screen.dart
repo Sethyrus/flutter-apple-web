@@ -1,4 +1,4 @@
-import 'package:apple/widgets/layout.dart';
+import 'package:apple/widgets/layout/layout.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {

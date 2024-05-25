@@ -10,5 +10,5 @@ class NavigationBarItemConfig {
     this.title,
     this.icon,
     this.dropdownColumnsConfig,
-  });
+  }) : assert(title != null || icon != null);
 }

@@ -1,5 +1,6 @@
+import 'package:apple/widgets/layout/layout_content.dart';
 import 'package:apple/widgets/navigation_bar/navigation_bar.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class Layout extends StatelessWidget {
   final Widget child;
@@ -8,11 +9,11 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      body: Stack(
         children: [
-          const NavigationBar(),
-          child,
+          const CNavigationBar(),
+          LayoutContent(child: child),
         ],
       ),
     );

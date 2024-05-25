@@ -1,5 +1,6 @@
 import 'package:apple/screens/home_screen.dart';
 import 'package:apple/utils/logger.dart';
+import 'package:apple/utils/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -9,8 +10,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme,
+      darkTheme: theme,
+      home: const HomeScreen(),
     );
   }
 }
