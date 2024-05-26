@@ -5,7 +5,7 @@ class Helpers {
     double size = 0;
 
     sizes.forEach((key, value) {
-      if (width >= key) {
+      if (width > key) {
         size = value;
       }
     });

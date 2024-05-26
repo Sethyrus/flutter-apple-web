@@ -7,10 +7,12 @@ class CNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final screenWidth = MediaQuery.sizeOf(context).width;
+
+    return Column(
       children: [
-        NavigationBarItems(),
-        NavigationBarDropdown(),
+        NavigationBarItems(screenWidth: screenWidth),
+        NavigationBarDropdown(screenWidth: screenWidth),
       ],
     );
   }

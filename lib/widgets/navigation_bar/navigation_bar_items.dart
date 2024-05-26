@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:apple/models/navigation_bar/navigation_bar_item_config.dart';
 import 'package:apple/providers/navigation_bar/active_navigation_bar_item_provider.dart';
 import 'package:apple/utils/constants/colors.dart';
 import 'package:apple/utils/constants/media_queries.dart';
@@ -6,15 +7,16 @@ import 'package:apple/utils/constants/navigation_bar_config.dart';
 import 'package:apple/utils/constants/sizes.dart';
 import 'package:apple/utils/helpers.dart';
 import 'package:apple/widgets/navigation_bar/navigation_bar_item.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NavigationBarItems extends ConsumerWidget {
-  const NavigationBarItems({super.key});
+  final double screenWidth;
+
+  const NavigationBarItems({super.key, required this.screenWidth});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
     final height = Helpers.getResponsiveSize(
       MediaQueries.navigationBarHeights,
       screenWidth,
@@ -27,6 +29,7 @@ class NavigationBarItems extends ConsumerWidget {
     final activeItem = ref.watch(activeNavigationBarItemProvider);
 
     return Container(
+      width: double.infinity,
       height: height,
       color: activeItem?.dropdownColumnsConfig == null
           ? CColors.navigationBarColor
@@ -64,6 +67,14 @@ class NavigationBarItems extends ConsumerWidget {
                 isActive: activeItem?.id == fixedRightItems[i].id,
               ),
             ),
+            if (screenWidth <= Sizes.contentBreakpoint)
+              const NavigationBarItem(
+                config: NavigationBarItemConfig(
+                  id: 9999,
+                  icon: CupertinoIcons.bars,
+                ),
+                isActive: false,
+              )
           ],
         ),
       ),
