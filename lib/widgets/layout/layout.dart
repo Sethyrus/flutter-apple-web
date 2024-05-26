@@ -12,8 +12,8 @@ class Layout extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const CNavigationBar(),
           LayoutContent(child: child),
+          const CNavigationBar(),
         ],
       ),
     );

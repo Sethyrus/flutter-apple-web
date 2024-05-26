@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:apple/providers/navigation_bar/active_navigation_bar_item_provider.dart';
+import 'package:apple/utils/constants/colors.dart';
 import 'package:apple/utils/constants/media_queries.dart';
 import 'package:apple/utils/constants/navigation_bar_config.dart';
 import 'package:apple/utils/constants/sizes.dart';
@@ -13,7 +15,10 @@ class NavigationBarItems extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.sizeOf(context).width;
-
+    final height = Helpers.getResponsiveSize(
+      MediaQueries.navigationBarHeights,
+      screenWidth,
+    );
     final padding = Helpers.getResponsiveSize(
       MediaQueries.navigationBarContentHPaddings,
       screenWidth,
@@ -21,36 +26,46 @@ class NavigationBarItems extends ConsumerWidget {
 
     final activeItem = ref.watch(activeNavigationBarItemProvider);
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: padding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ...List.generate(
-            fixedLeftItems.length,
-            (i) => NavigationBarItem(
-              config: fixedLeftItems[i],
-              isActive: activeItem?.id == fixedLeftItems[i].id,
-            ),
-          ),
-          if (screenWidth > Sizes.contentBreakpoint)
+    return Container(
+      height: height,
+      color: activeItem?.dropdownColumnsConfig == null
+          ? CColors.navigationBarColor
+          : CColors.navigationBarColorActive,
+      alignment: Alignment.center,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: padding),
+        constraints: BoxConstraints(
+          maxWidth: min(screenWidth, Sizes.navigationBarContentWidth),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             ...List.generate(
-              centerItems.length,
+              fixedLeftItems.length,
               (i) => NavigationBarItem(
-                config: centerItems[i],
-                isActive: activeItem?.id == centerItems[i].id,
+                config: fixedLeftItems[i],
+                isActive: activeItem?.id == fixedLeftItems[i].id,
               ),
-            )
-          else
-            const Expanded(child: SizedBox()),
-          ...List.generate(
-            fixedRightItems.length,
-            (i) => NavigationBarItem(
-              config: fixedRightItems[i],
-              isActive: activeItem?.id == fixedRightItems[i].id,
             ),
-          ),
-        ],
+            if (screenWidth > Sizes.contentBreakpoint)
+              ...List.generate(
+                centerItems.length,
+                (i) => NavigationBarItem(
+                  config: centerItems[i],
+                  isActive: activeItem?.id == centerItems[i].id,
+                ),
+              )
+            else
+              const Expanded(child: SizedBox()),
+            ...List.generate(
+              fixedRightItems.length,
+              (i) => NavigationBarItem(
+                config: fixedRightItems[i],
+                isActive: activeItem?.id == fixedRightItems[i].id,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

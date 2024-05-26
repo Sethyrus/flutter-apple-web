@@ -40,6 +40,11 @@ class NavigationBarItem extends ConsumerWidget {
       onEnter: (_) => ref
           .read(activeNavigationBarItemProvider.notifier)
           .setActiveItem(config),
+      onExit: config.dropdownColumnsConfig == null
+          ? (_) => ref
+              .read(activeNavigationBarItemProvider.notifier)
+              .setActiveItem(null)
+          : null,
       child: SizedBox(
         height: double.infinity,
         child: Padding(
